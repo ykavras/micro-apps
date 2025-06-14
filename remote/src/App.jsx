@@ -1,27 +1,33 @@
 import React from "react";
-import { Button, Typography } from "@mui/material";
 import { useShallow } from "zustand/react/shallow";
 import { Routes, Route, useNavigate } from "react-router";
+import {
+  Card,
+  Stack,
+  Button,
+  CardActions,
+  CardContent,
+  CssBaseline,
+  Typography,
+  ThemeProvider,
+} from "@mui/material";
 //
+import uiApp from "UIApp/App";
 import useCounter from "StoreApp/stores/counter";
 const Header = React.lazy(() => import("HostApp/Header"));
 
 const RemoteApp = () => {
-  const counter = useCounter(useShallow((s) => s));
+  const { theme } = uiApp();
 
   return (
-    <React.Suspense fallback={<div>Loading...</div>}>
-      <Routes>
-        <Route path="/" element={<Example />} />
-      </Routes>
-      <Button variant="contained" color="primary" onClick={counter.increment}>
-        Increment
-      </Button>
-      <Button variant="contained" color="error" onClick={counter.decrement}>
-        Decrement
-      </Button>
-      <Typography>{counter.count}</Typography>
-    </React.Suspense>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Example />} />
+        </Routes>
+      </React.Suspense>
+    </ThemeProvider>
   );
 };
 
@@ -29,15 +35,35 @@ export default RemoteApp;
 
 const Example = () => {
   const navigate = useNavigate();
+  const { toggleTheme } = uiApp();
+  const counter = useCounter(useShallow((s) => s));
+
   return (
-    <div className="App">
-      <Header />
-      <h1>Remote</h1>
-      <div className="card">
-        <Button variant="contained" onClick={() => navigate("/")}>
-          Home
+    <Stack spacing={2} alignItems="center" justifyContent="center" height="100vh">
+      <Typography variant="subtitle1">Host Application</Typography>
+      <Stack direction="row" spacing={2}>
+        <Button variant="outlined" onClick={toggleTheme}>
+          Theme
         </Button>
-      </div>
-    </div>
+        <Button variant="outlined" onClick={() => navigate("/")}>
+          Host
+        </Button>
+      </Stack>
+      <Card>
+        <CardContent>
+          <Typography variant="h1" align="center">
+            {counter.count}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button fullWidth variant="contained" color="primary" onClick={counter.increment}>
+            Increment
+          </Button>
+          <Button fullWidth variant="contained" color="error" onClick={counter.decrement}>
+            Decrement
+          </Button>
+        </CardActions>
+      </Card>
+    </Stack>
   );
 };

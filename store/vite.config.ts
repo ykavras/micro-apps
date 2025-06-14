@@ -37,6 +37,7 @@ export default defineConfig(({ mode }) => {
         filename: "store-app-entry.js", // Build edilecek dosya adı
         remotes: {}, // Uzak micro-frontend'ler
         exposes: {
+          "./stores/theme": "./src/stores/theme/index.ts",
           "./stores/counter": "./src/stores/counter/index.ts",
         },
       }),
