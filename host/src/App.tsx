@@ -1,6 +1,6 @@
 import React from "react";
 import { useShallow } from "zustand/react/shallow";
-import { Routes, Route, useNavigate, Outlet } from "react-router";
+import { Routes, Route, useNavigate, Outlet, Navigate } from "react-router";
 import {
   Card,
   Stack,
@@ -13,8 +13,12 @@ import {
 } from "@mui/material";
 
 //
+import GuestGuard from "./guards/GuestGuard";
+import AuthGuard from "./guards/AuthGuard";
+//
 import uiApp from "UIApp/theme";
-import useCounter from "StoreApp/stores/counter";
+import useAuthStore from "StoreApp/stores/auth";
+import useCounterStore from "StoreApp/stores/counter";
 
 const RemoteApp = React.lazy(() => import("RemoteApp/App"));
 
@@ -33,10 +37,56 @@ function App() {
 
 export default App;
 
+const CustomRouter = () => {
+  const { login, logout } = useAuthStore(useShallow((s) => s));
+
+  return (
+    <Routes>
+      <Route
+        path="/auth"
+        element={
+          <GuestGuard>
+            <Outlet />
+          </GuestGuard>
+        }
+      >
+        <Route index element={<Navigate to="login" />} />
+        <Route
+          path="login"
+          element={
+            <>
+              <Typography variant="subtitle1">Login</Typography>
+              <Button variant="outlined" onClick={login}>
+                Login
+              </Button>
+            </>
+          }
+        />
+        <Route path="register" element={<Typography variant="subtitle1">Register</Typography>} />
+      </Route>
+      <Route
+        path="/"
+        element={
+          <AuthGuard>
+            <Button variant="outlined" onClick={logout}>
+              Logout
+            </Button>
+            <Outlet />
+          </AuthGuard>
+        }
+      >
+        <Route index element={<Example />} />
+        <Route path="/remote/*" element={<RemoteApp />} />
+      </Route>
+      <Route path="*" element={<Typography>Not found</Typography>} />
+    </Routes>
+  );
+};
+
 const Example = () => {
   const navigate = useNavigate();
   const { toggleTheme } = uiApp();
-  const counter = useCounter(useShallow((s) => s));
+  const counter = useCounterStore(useShallow((s) => s));
 
   return (
     <Stack spacing={2} alignItems="center" justifyContent="center" height="100vh">
@@ -65,17 +115,5 @@ const Example = () => {
         </CardActions>
       </Card>
     </Stack>
-  );
-};
-
-const CustomRouter = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Outlet />}>
-        <Route index element={<Example />} />
-        <Route path="/remote/*" element={<RemoteApp />} />
-      </Route>
-      <Route path="*" element={<Typography>Not found</Typography>} />
-    </Routes>
   );
 };

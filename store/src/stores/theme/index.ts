@@ -3,7 +3,7 @@ import { persist } from "zustand/middleware";
 //
 import type { ThemeStore } from "./types";
 
-const useTheme = create<ThemeStore>()(
+const useThemeStore = create<ThemeStore>()(
   persist(
     (set) => ({
       mode: "light",
@@ -13,4 +13,4 @@ const useTheme = create<ThemeStore>()(
   )
 );
 
-export default useTheme;
+export default useThemeStore;

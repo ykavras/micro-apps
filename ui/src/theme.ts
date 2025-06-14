@@ -1,10 +1,10 @@
 import { createTheme } from "@mui/material/styles";
 
 import type { UIApp } from "./types";
-import useTheme from "StoreApp/stores/theme";
+import useThemeStore from "StoreApp/stores/theme";
 
 const Theme = (): UIApp => {
-  const { mode, toggleTheme } = useTheme();
+  const { mode, toggleTheme } = useThemeStore();
   const theme = createTheme({ palette: { mode } });
 
   return { theme, toggleTheme };

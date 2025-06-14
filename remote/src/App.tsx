@@ -13,7 +13,8 @@ import {
 } from "@mui/material";
 //
 import uiApp from "UIApp/theme";
-import useCounter from "StoreApp/stores/counter";
+import axios from "HostApp/request";
+import useCounterStore from "StoreApp/stores/counter";
 
 const RemoteApp = () => {
   const { theme } = uiApp();
@@ -46,7 +47,7 @@ export default RemoteApp;
 const Example = () => {
   const navigate = useNavigate();
   const { toggleTheme } = uiApp();
-  const counter = useCounter(useShallow((s) => s));
+  const counter = useCounterStore(useShallow((s) => s));
 
   return (
     <Stack spacing={2} alignItems="center" justifyContent="center" height="100vh">
@@ -58,8 +59,11 @@ const Example = () => {
         <Button variant="outlined" onClick={() => navigate("/")}>
           Host
         </Button>
-        <Button variant="outlined" onClick={() => navigate("/remote/detail")}>
+        <Button variant="outlined" onClick={() => navigate("detail")}>
           Detail
+        </Button>
+        <Button variant="outlined" onClick={() => axios.get("/api/test")}>
+          Test
         </Button>
       </Stack>
       <Card>

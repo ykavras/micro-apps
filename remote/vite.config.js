@@ -30,6 +30,7 @@ export default defineConfig(({ mode }) => {
         exposes: { "./App": "./src/App" },
         remotes: {
           UIApp: "http://localhost:5003/assets/ui-app-entry.js",
+          HostApp: "http://localhost:5001/assets/host-app-entry.js",
           StoreApp: "http://localhost:5004/assets/store-app-entry.js",
         },
       }),

@@ -3,7 +3,7 @@ import { persist } from "zustand/middleware";
 //
 import type { CounterStore } from "./types";
 
-const useCounter = create<CounterStore>()(
+const useCounterStore = create<CounterStore>()(
   persist(
     (set) => ({
       count: 0,
@@ -14,4 +14,4 @@ const useCounter = create<CounterStore>()(
   )
 );
 
-export default useCounter;
+export default useCounterStore;
