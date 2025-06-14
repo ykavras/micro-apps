@@ -1,0 +1,71 @@
+{
+  "hash": "af6ccd3d",
+  "browserHash": "e9fee4a0",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/.pnpm/react@18.3.1/node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "90d1fcb0",
+      "needsInterop": true
+    },
+    "react-dom": {
+      "src": "../../node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/index.js",
+      "file": "react-dom.js",
+      "fileHash": "f7e15b80",
+      "needsInterop": true
+    },
+    "react-router": {
+      "src": "../../node_modules/.pnpm/react-router@7.6.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-router/dist/development/index.mjs",
+      "file": "react-router.js",
+      "fileHash": "b93f92d1",
+      "needsInterop": false
+    },
+    "react/jsx-runtime": {
+      "src": "../../node_modules/.pnpm/react@18.3.1/node_modules/react/jsx-runtime.js",
+      "file": "react_jsx-runtime.js",
+      "fileHash": "6bdd995a",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/.pnpm/react@18.3.1/node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "2fe75cb6",
+      "needsInterop": true
+    },
+    "@mui/material": {
+      "src": "../../node_modules/.pnpm/@mui+material@7.1.1_@emotion+react@11.14.0_@types+react@18.3.23_react@18.3.1__@emotion+_e83fbb5354919a608104a6a5549cc613/node_modules/@mui/material/esm/index.js",
+      "file": "@mui_material.js",
+      "fileHash": "d29fc08a",
+      "needsInterop": false
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "c9e12a4b",
+      "needsInterop": true
+    },
+    "zustand/react/shallow": {
+      "src": "../../node_modules/.pnpm/zustand@5.0.5_@types+react@18.3.23_react@18.3.1/node_modules/zustand/esm/react/shallow.mjs",
+      "file": "zustand_react_shallow.js",
+      "fileHash": "aa79b7d7",
+      "needsInterop": false
+    },
+    "zustand": {
+      "src": "../../node_modules/.pnpm/zustand@5.0.5_@types+react@18.3.23_react@18.3.1/node_modules/zustand/esm/index.mjs",
+      "file": "zustand.js",
+      "fileHash": "d5dbf656",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-PFR2NNZ6": {
+      "file": "chunk-PFR2NNZ6.js"
+    },
+    "chunk-EOGFDMK5": {
+      "file": "chunk-EOGFDMK5.js"
+    },
+    "chunk-64E5A62O": {
+      "file": "chunk-64E5A62O.js"
+    }
+  }
+}

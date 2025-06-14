@@ -1,0 +1,20 @@
+{
+  "name": "store",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite --port 5004 --strictPort",
+    "preview": "vite preview --port 5004 --strictPort",
+    "build:watch": "vite build --watch --mode development",
+    "rebuild": "rm -rf node_modules && rm -rf dist && pnpm install && pnpm build"
+  },
+  "dependencies": {
+    "zustand": "^5.0.5"
+  },
+  "devDependencies": {
+    "vite": "^4.2.0",
+    "@originjs/vite-plugin-federation": "^1.2.1"
+  }
+}
