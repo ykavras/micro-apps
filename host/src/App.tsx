@@ -1,6 +1,6 @@
 import React from "react";
 import { useShallow } from "zustand/react/shallow";
-import { Routes, Route, useNavigate } from "react-router";
+import { Routes, Route, useNavigate, Outlet } from "react-router";
 import {
   Card,
   Stack,
@@ -11,27 +11,27 @@ import {
   Typography,
   ThemeProvider,
 } from "@mui/material";
-//
-import uiApp from "UIApp/App";
-import useCounter from "StoreApp/stores/counter";
-const Header = React.lazy(() => import("HostApp/Header"));
 
-const RemoteApp = () => {
+//
+import uiApp from "UIApp/theme";
+import useCounter from "StoreApp/stores/counter";
+
+const RemoteApp = React.lazy(() => import("RemoteApp/App"));
+
+function App() {
   const { theme } = uiApp();
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <React.Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route path="/" element={<Example />} />
-        </Routes>
+        <CustomRouter />
       </React.Suspense>
     </ThemeProvider>
   );
-};
+}
 
-export default RemoteApp;
+export default App;
 
 const Example = () => {
   const navigate = useNavigate();
@@ -45,8 +45,8 @@ const Example = () => {
         <Button variant="outlined" onClick={toggleTheme}>
           Theme
         </Button>
-        <Button variant="outlined" onClick={() => navigate("/")}>
-          Host
+        <Button variant="outlined" onClick={() => navigate("/remote")}>
+          Remote
         </Button>
       </Stack>
       <Card>
@@ -65,5 +65,17 @@ const Example = () => {
         </CardActions>
       </Card>
     </Stack>
+  );
+};
+
+const CustomRouter = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Outlet />}>
+        <Route index element={<Example />} />
+        <Route path="/remote/*" element={<RemoteApp />} />
+      </Route>
+      <Route path="*" element={<Typography>Not found</Typography>} />
+    </Routes>
   );
 };

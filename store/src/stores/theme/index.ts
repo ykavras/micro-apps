@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 //
-import { ThemeStore } from "./types";
+import type { ThemeStore } from "./types";
 
 const useTheme = create<ThemeStore>()(
   persist(

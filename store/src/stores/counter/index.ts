@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 //
-import { CounterStore } from "./types";
+import type { CounterStore } from "./types";
 
 const useCounter = create<CounterStore>()(
   persist(

@@ -1,4 +1,10 @@
+export type ThemeMode = "light" | "dark";
+
 export interface ThemeStore {
-  mode: "light" | "dark";
+  mode: ThemeMode;
   toggleTheme: () => void;
+}
+
+export interface ThemeState {
+  mode: ThemeMode;
 }

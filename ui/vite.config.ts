@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => {
         filename: "ui-app-entry.js",
         shared: ["react", "react-dom", "@mui/material", "@emotion/react", "@emotion/styled"],
         //
-        exposes: { "./App": "./src/index.ts" },
+        exposes: { "./theme": "./src/theme.ts" },
         remotes: {
           StoreApp: "http://localhost:5004/assets/store-app-entry.js",
         },

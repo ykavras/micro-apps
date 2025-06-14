@@ -1,6 +1,6 @@
 import React from "react";
 import { useShallow } from "zustand/react/shallow";
-import { Routes, Route, useNavigate, Outlet } from "react-router";
+import { Routes, Route, useNavigate } from "react-router";
 import {
   Card,
   Stack,
@@ -11,26 +11,26 @@ import {
   Typography,
   ThemeProvider,
 } from "@mui/material";
-
 //
-import uiApp from "UIApp/App";
+import uiApp from "UIApp/theme";
 import useCounter from "StoreApp/stores/counter";
 
-const RemoteApp = React.lazy(() => import("RemoteApp/App"));
-
-function App() {
+const RemoteApp = () => {
   const { theme } = uiApp();
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <React.Suspense fallback={<div>Loading...</div>}>
-        <CustomRouter />
+        <Routes>
+          <Route path="/" element={<Example />} />
+        </Routes>
       </React.Suspense>
     </ThemeProvider>
   );
-}
+};
 
-export default App;
+export default RemoteApp;
 
 const Example = () => {
   const navigate = useNavigate();
@@ -39,13 +39,13 @@ const Example = () => {
 
   return (
     <Stack spacing={2} alignItems="center" justifyContent="center" height="100vh">
-      <Typography variant="subtitle1">Host Application</Typography>
+      <Typography variant="subtitle1">Remote Application</Typography>
       <Stack direction="row" spacing={2}>
         <Button variant="outlined" onClick={toggleTheme}>
           Theme
         </Button>
-        <Button variant="outlined" onClick={() => navigate("/remote")}>
-          Remote
+        <Button variant="outlined" onClick={() => navigate("/")}>
+          Host
         </Button>
       </Stack>
       <Card>
@@ -64,17 +64,5 @@ const Example = () => {
         </CardActions>
       </Card>
     </Stack>
-  );
-};
-
-const CustomRouter = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Outlet />}>
-        <Route index element={<Example />} />
-        <Route path="/remote/*" element={<RemoteApp />} />
-      </Route>
-      <Route path="*" element={<Typography>Not found</Typography>} />
-    </Routes>
   );
 };

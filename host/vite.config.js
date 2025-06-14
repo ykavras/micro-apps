@@ -27,10 +27,6 @@ export default defineConfig(({ mode }) => {
         name: "HostApp",
         filename: "host-app-entry.js",
         shared: ["react", "react-dom", "react-router", "zustand"],
-        exposes: {
-          "./App": "./src/App",
-          "./Header": "./src/components/header.tsx",
-        },
         remotes: {
           UIApp: "http://localhost:5003/assets/ui-app-entry.js",
           StoreApp: "http://localhost:5004/assets/store-app-entry.js",
