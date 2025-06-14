@@ -14,16 +14,20 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
+
+    /* Paths */
+    "baseUrl": ".",
     "paths": {
+      "@/*": ["./*"],
       "RemoteApp/*": ["../remote/src/*"],
       "StoreApp/*": ["../store/src/*"],
       "UIApp/*": ["../ui/src/*"]
     },
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },

@@ -13,8 +13,11 @@
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
-    "jsx": "react-jsx",
+
+    /* Paths */
+    "baseUrl": ".",
     "paths": {
+      "@/*": ["./*"],
       "HostApp/*": ["../host/src/*"],
       "RemoteApp/*": ["../remote/src/*"],
       "StoreApp/*": ["../store/src/*"]
@@ -24,7 +27,6 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },

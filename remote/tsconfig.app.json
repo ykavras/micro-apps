@@ -14,7 +14,11 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
+
+    /* Paths */
+    "baseUrl": ".",
     "paths": {
+      "@/*": ["./*"],
       "HostApp/*": ["../host/src/*"],
       "StoreApp/*": ["../store/src/*"],
       "UIApp/*": ["../ui/src/*"]
@@ -24,7 +28,6 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
