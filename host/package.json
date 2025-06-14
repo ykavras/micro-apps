@@ -6,8 +6,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite --port 5001 --strictPort",
-    "preview": "vite preview --port 5001 --strictPort",
     "build:watch": "vite build --watch --mode development",
+    "preview": "vite preview --port 5001 --strictPort --host",
     "rebuild": "rm -rf node_modules && rm -rf dist && pnpm install && pnpm build"
   },
   "dependencies": {

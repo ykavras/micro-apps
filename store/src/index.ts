@@ -1,1 +1,1 @@
-export * from "./stores/counter";
+export {};

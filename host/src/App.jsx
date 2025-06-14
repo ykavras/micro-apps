@@ -1,19 +1,19 @@
 import React, { Suspense } from "react";
 import { useShallow } from "zustand/react/shallow";
 import { Routes, Route, useNavigate, Outlet } from "react-router";
-import { Button, Card, CardContent, Typography } from "@mui/material";
+import { Button, Card, CardContent, Typography, useTheme } from "@mui/material";
 
 //
 import useCounter from "StoreApp/stores/counter";
-const UI = React.lazy(() => import("UIApp/App"));
+const UIApp = React.lazy(() => import("UIApp/App"));
 const RemoteApp = React.lazy(() => import("RemoteApp/App"));
 
 function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <UI>
+      <UIApp>
         <CustomRouter />
-      </UI>
+      </UIApp>
     </Suspense>
   );
 }
@@ -24,6 +24,10 @@ const Example = () => {
   const navigate = useNavigate();
 
   const counter = useCounter(useShallow((s) => s));
+
+  const { palette } = useTheme();
+
+  console.log(palette.mode);
 
   return (
     <>
