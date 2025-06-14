@@ -17,13 +17,24 @@ import useCounter from "StoreApp/stores/counter";
 
 const RemoteApp = () => {
   const { theme } = uiApp();
-
+  const navigate = useNavigate();
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <React.Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Example />} />
+          <Route
+            path="/detail"
+            element={
+              <>
+                <Typography>Detail</Typography>
+                <Button variant="outlined" onClick={() => navigate("/")}>
+                  Host
+                </Button>
+              </>
+            }
+          />
         </Routes>
       </React.Suspense>
     </ThemeProvider>
@@ -46,6 +57,9 @@ const Example = () => {
         </Button>
         <Button variant="outlined" onClick={() => navigate("/")}>
           Host
+        </Button>
+        <Button variant="outlined" onClick={() => navigate("/remote/detail")}>
+          Detail
         </Button>
       </Stack>
       <Card>
