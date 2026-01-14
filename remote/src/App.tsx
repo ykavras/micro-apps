@@ -51,7 +51,7 @@ const Example = () => {
 
   return (
     <Stack spacing={2} alignItems="center" justifyContent="center" height="100vh">
-      <Typography variant="subtitle1">Remote Application</Typography>
+      <Typography variant="subtitle1">Remote Application 2</Typography>
       <Stack direction="row" spacing={2}>
         <Button variant="outlined" onClick={toggleTheme}>
           Theme
